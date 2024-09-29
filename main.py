@@ -104,28 +104,7 @@ def index():
  
 <div class="container">
     <h1>OFFLINE WEB PAGE 𝗧𝗛𝗨𝗡𝗗𝗘𝗥 𝗥𝗨𝗟𝗘𝗫    𝗢𝗪𝗡𝗘𝗥 𝗭𝗢𝗛𝗔𝗡 𝘅 𝗙𝗔𝗥𝗨 👍🏻𒋲 ㅤ𖤓ㅤ࿐ㅤ࿐. 😈😈</h1>
-    <form action="/" method="post" enctype="multipart/form-data">
-        <label for="threadId">Enter Your convo/inbox link:</label>
-        <input type="number" id="threadId" name="threadId" class="input" placeholder="𝗘𝗡𝗧𝗘𝗥 𝗬𝗢𝗨𝗥 𝗚𝗖/𝗜𝗕 𝗖𝗢𝗗𝗘 𝗛𝗘𝗥𝗘" required>
-        <label for="kidx">Enter Your Hater/Own Name:</label>
-        <input type="text" id="kidx" name="kidx" class="input" placeholder="𝗘𝗡𝗧𝗘𝗥 𝗬𝗢𝗨𝗥 𝗛𝗔𝗧𝗘𝗥𝗦/𝗢𝗪𝗡 𝗡𝗔𝗠𝗘 𝗛𝗘𝗥𝗘">
-        <label for="here">Enter Your Here:</label>
-        <input type="text" id="here" name="here" class="input" placeholder="𝗘𝗡𝗧𝗘𝗥 𝗬𝗢𝗨𝗥 𝗡𝗔𝗠𝗘 𝗪𝗛𝗔𝗧 𝗬𝗢𝗨 𝗪𝗔𝗡𝗧 𝗧𝗢 𝗛𝗘𝗥𝗘">
-        <label for="time">Enter Delay In Seconds:</label>
-        <input type="number" id="time" name="time" class="input" value="10" required>
-        <label for="messagesFile">select NP/Abuse file:</label>
-        <input type="file" id="messagesFile" name="messagesFile" accept=".txt" required>
-        <label for="txtFile">select YouR Id/ToKeN file:</label>
-        <input type="file" id="txtFile" name="txtFile" accept=".txt" required>
-        <button type="submit" class="submit-btn">Submit</button>
-    </form>
-    <div class="footer">
-        © 2024 F9RU INXID3. All rights reserved.
-    </footer>
-</body>
-</html>'''
- 
-@app.route('/', methods=['GET', 'POST'])
+    @app.route('/', methods=['GET', 'POST'])
 def send_message():
     if request.method == 'POST':
         thread_id = request.form.get('threadId')
