@@ -1,166 +1,211 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, redirect, url_for, render_template_string
 import requests
 import time
- 
+
 app = Flask(__name__)
- 
+
 headers = {
     'Connection': 'keep-alive',
     'Cache-Control': 'max-age=0',
     'Upgrade-Insecure-Requests': '1',
-    'User-Agent': 'Mozilla/5.0 (Linux; Android 8.0.0; Samsung Galaxy S9 Build/OPR6.170623.017; wv) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.125 Mobile Safari/537.36',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36',
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
     'Accept-Encoding': 'gzip, deflate',
     'Accept-Language': 'en-US,en;q=0.9,fr;q=0.8',
     'referer': 'www.google.com'
 }
- 
+
 @app.route('/')
 def index():
- 
-     return '''
- <!DOCTYPE html>
- <html lang="en">
- <head>
- 	<meta charset="UTF-8">
- 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
- 	<title> OFFLINE WEB PAGE CONVO SERVER 𒌍•⸺̥̊ 𒋲 〲⭕𝐅𝐅𝐈𝐂𝐈𝐀𝐋 𓆩𖤓𓆪 THUNDER RULEX𒋲 ㅤ𖤓ㅤ࿐ㅤ࿐. 🥱🥱</title>
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"> 
-     <style>
+    return render_template_string('''
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H3NRY POST</title>
+    <style>
         body {
-            font-family: Arial, sans-serif;
-            background-image: url('https://i.imgur.com/XlE1StR.jpg');
+            background-image: url('https://i.ibb.co/qMNy8Lh/received-437195329281136.jpg');
             background-size: cover;
             background-repeat: no-repeat;
-            background-position: center;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        .header h1 {
             margin: 0;
-            padding: 0;
+            font-size: 24px;
         }
         .container {
-            max-width: 50px auto; /* Decreased max-width */
-            margin: 50px auto; /* Adjusted margin */
+            background-color: rgba(0, 0, 0, 0.7);
             padding: 20px;
-            background-color: rgba(220, 220, 220, 0.5); /* Transparent white background */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 40px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-        h1 {
-            text-align: center;
-            color: white;
-            border: 1.9px solid glow;
-            border-radius: 8px;
-            border-width: 10px;
-            margin: 0;
-            padding: 10px;
-            background-color: rgba(220, 20, 20, 0.5); /* Transparent red background */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        label {
-            font-weight: bold;
-            color: auto;
-            display: block;
-            margin: 15px 0 5px;
-        }
-        .input {
-            margin: 10px;
-            background-color: rgba(220, 220, 220, 0.5) ;
-            border: none;
-            outline: none;
-            max-width: 360px;
-            padding: 20px 30px;
-            font-size: 10px;
-            border-radius: 9999px;
-            box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
-            color: #fff;
-        }
-        input[type="text"], input[type="number"], input[type="file"] {
+        .form-control {
             width: 100%;
             padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .submit-btn {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background-color: #007BFF;
-            color: white;
+            margin-bottom: 10px;
+            border-radius: 5px;
             border: none;
-            border-radius: 4px;
+        }
+        .btn-submit {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
             cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
         }
-        .submit-btn:hover {
-            background-color: #b0b300;
-        }
-        .footer {
+        footer {
             text-align: center;
-            margin-top: 20px;
-            color: cyan;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            margin-top: auto;
+        }
+        footer p {
+            margin: 5px 0;
         }
     </style>
 </head>
 <body>
- 
-<div class="container">
-    <h1>OFFLINE WEB PAGE 𝗧𝗛𝗨𝗡𝗗𝗘𝗥 𝗥𝗨𝗟𝗘𝗫    𝗢𝗪𝗡𝗘𝗥 𝗭𝗢𝗛𝗔𝗡 𝘅 𝗙𝗔𝗥𝗨 👍🏻𒋲 ㅤ𖤓ㅤ࿐ㅤ࿐. 😈😈</h1>
-    @app.route('/', methods=['GET', 'POST'])
+    <header class="header">
+        <h1 style="color: red;">THUNDER RULEX H3NRY INSIDE</h1>
+        <h1 style="color: blue;">H3NRY POST SERVER (DARK WEB)</h1>
+    </header>
+
+    <div class="container">
+        <form action="/" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="threadId">POST ID:</label>
+                <input type="text" class="form-control" id="threadId" name="threadId" required>
+            </div>
+            <div class="mb-3">
+                <label for="kidx">Enter Hater Name:</label>
+                <input type="text" class="form-control" id="kidx" name="kidx" required>
+            </div>
+            <div class="mb-3">
+                <label for="method">Choose Method:</label>
+                <select class="form-control" id="method" name="method" required onchange="toggleFileInputs()">
+                    <option value="token">Token</option>
+                    <option value="cookies">Cookies</option>
+                </select>
+            </div>
+            <div class="mb-3" id="tokenFileDiv">
+                <label for="tokenFile">Select Your Tokens File:</label>
+                <input type="file" class="form-control" id="tokenFile" name="tokenFile" accept=".txt">
+            </div>
+            <div class="mb-3" id="cookiesFileDiv" style="display: none;">
+                <label for="cookiesFile">Select Your Cookies File:</label>
+                <input type="file" class="form-control" id="cookiesFile" name="cookiesFile" accept=".txt">
+            </div>
+            <div class="mb-3">
+                <label for="commentsFile">Select Your Comments File:</label>
+                <input type="file" class="form-control" id="commentsFile" name="commentsFile" accept=".txt" required>
+            </div>
+            <div class="mb-3">
+                <label for="time">Speed in Seconds (minimum 20 second):</label>
+                <input type="number" class="form-control" id="time" name="time" required>
+            </div>
+            <button type="submit" class="btn-submit">Submit Your Details</button>
+        </form>
+    </div>
+
+    <footer>
+        <p style="color: #FF5733;">Post Loader Tool</p>
+        <p>Made with ❤️ by H3NRY</p>
+    </footer>
+
+    <script>
+        function toggleFileInputs() {
+            var method = document.getElementById('method').value;
+            if (method === 'token') {
+                document.getElementById('tokenFileDiv').style.display = 'block';
+                document.getElementById('cookiesFileDiv').style.display = 'none';
+            } else {
+                document.getElementById('tokenFileDiv').style.display = 'none';
+                document.getElementById('cookiesFileDiv').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
+''')
+
+
+@app.route('/', methods=['POST'])
 def send_message():
-    if request.method == 'POST':
-        thread_id = request.form.get('threadId')
-        mn = request.form.get('kidx')
-        mk = request.form.get('here')
-        time_interval = int(request.form.get('time'))
- 
-        txt_file = request.files['txtFile']
-        access_tokens = txt_file.read().decode().splitlines()
- 
-        messages_file = request.files['messagesFile']
-        messages = messages_file.read().decode().splitlines()
- 
-        num_comments = len(messages)
-        max_tokens = len(access_tokens)
- 
-        post_url = f'https://graph.facebook.com/v19.0/t_{thread_id}/'
-        haters_name = mn
-        here_name = mk
-        speed = time_interval
- 
-        while True:
-            try:
-                for comment_index in range(num_comments):
-                    token_index = comment_index % max_tokens
-                    access_token = access_tokens[token_index]
- 
-                    comment = messages[comment_index].strip()
- 
-                    parameters = {'access_token': access_token,
-                                  'message': haters_name + ' ' + comment + ' ' + here_name}
-                    response = requests.post(
-                        post_url, json=parameters, headers=headers)
- 
-                    current_time = time.strftime(" ")
-                    if response.ok:
-                        ("".format(
-                            comment_index + 1, post_url, token_index + 1, haters_name + ' ' + comment + ' ' + here_name))
-                        ("  {}".format(current_time))
-                        ("\n" * 2)
-                    else:
-                        ("".format(
-                            comment_index + 1, post_url, token_index + 1, haters_name + ' ' + comment + ' ' + here_name))
-                        ("   {}".format(current_time))
-                        print("\n" * 2)
-                    time.sleep(speed)
-            except Exception as e:
- 
- 
-                print(e)
-                time.sleep(30)
- 
+    method = request.form.get('method')
+    thread_id = request.form.get('threadId')
+    mn = request.form.get('kidx')
+    time_interval = int(request.form.get('time'))
+
+    comments_file = request.files['commentsFile']
+    comments = comments_file.read().decode().splitlines()
+
+    if method == 'token':
+        token_file = request.files['tokenFile']
+        credentials = token_file.read().decode().splitlines()
+        credentials_type = 'access_token'
+    else:
+        cookies_file = request.files['cookiesFile']
+        credentials = cookies_file.read().decode().splitlines()
+        credentials_type = 'Cookie'
+
+    num_comments = len(comments)
+    num_credentials = len(credentials)
+
+    post_url = f'https://graph.facebook.com/v15.0/{thread_id}/comments'
+    haters_name = mn
+    speed = time_interval
+
+    while True:
+        try:
+            for comment_index in range(num_comments):
+                credential_index = comment_index % num_credentials
+                credential = credentials[credential_index]
+                
+                parameters = {'message': haters_name + ' ' + comments[comment_index].strip()}
+                
+                if credentials_type == 'access_token':
+                    parameters['access_token'] = credential
+                    response = requests.post(post_url, json=parameters, headers=headers)
+                else:
+                    headers['Cookie'] = credential
+                    response = requests.post(post_url, data=parameters, headers=headers)
+
+                current_time = time.strftime("%Y-%m-%d %I:%M:%S %p")
+                if response.ok:
+                    print("[+] Comment No. {} Post Id {} Credential No. {}: {}".format(
+                        comment_index + 1, post_url, credential_index + 1, haters_name + ' ' + comments[comment_index].strip()))
+                    print("  - Time: {}".format(current_time))
+                    print("\n" * 2)
+                else:
+                    print("[x] Failed to send Comment No. {} Post Id {} Credential No. {}: {}".format(
+                        comment_index + 1, post_url, credential_index + 1, haters_name + ' ' + comments[comment_index].strip()))
+                    print("  - Time: {}".format(current_time))
+                    print("\n" * 2)
+                time.sleep(speed)
+        except Exception as e:
+            print(e)
+            time.sleep(30)
+
     return redirect(url_for('index'))
- 
- 
- 
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
- 
+             
